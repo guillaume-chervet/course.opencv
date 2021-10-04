@@ -62,8 +62,9 @@ if len(good_matches) >= MIN_NUM_GOOD_MATCHES:
         matchesMask=mask_matches, flags=2)
 
     # Show the homography and good matches.
-    plt.imshow(img_matches)
-    plt.show()
+    cv2.imshow("img_matches", img_matches)
+    cv2.waitKey()
+    cv2.destroyAllWindows()
 else:
     print("Not enough matches good were found - %d/%d" % \
           (len(good_matches), MIN_NUM_GOOD_MATCHES))

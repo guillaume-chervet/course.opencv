@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
 
 original = cv2.imread('statue_small.jpg')
 img = original.copy()
@@ -15,16 +14,14 @@ cv2.grabCut(img, mask, rect, bgdModel, fgdModel, 5, cv2.GC_INIT_WITH_RECT)
 mask2 = np.where((mask==2) | (mask==0), 0, 1).astype('uint8')
 img = img*mask2[:,:,np.newaxis]
 
-plt.subplot(121)
-plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-plt.title("grabcut")
-plt.xticks([])
-plt.yticks([])
+# Draw rectangle
+start_point = (100, 1)
+end_point = (421, 378)
+color = (0, 0, 255)
+thickness = 2
+image = cv2.rectangle(img, start_point, end_point, color, thickness)
 
-plt.subplot(122)
-plt.imshow(cv2.cvtColor(original, cv2.COLOR_BGR2RGB))
-plt.title("original")
-plt.xticks([])
-plt.yticks([])
-
-plt.show()
+cv2.imshow("grabcut", img)
+cv2.imshow("original", original)
+cv2.waitKey()
+cv2.destroyAllWindows()
