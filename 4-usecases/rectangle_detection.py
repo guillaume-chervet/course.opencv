@@ -213,7 +213,6 @@ def extract_rectangle(target_img, destination_path="", environment_mode="product
         if environment_mode == "development":
             cv2.drawContours(img_foreground, [box], 0, color, 20)
             cv2.imwrite(destination_path + "5_img_foreground.png", img_foreground)
-            cv2.drawContours(target_img, [box], 0, color, 20)
         return wrap(box, target_img)
     else:
         destination_img = target_img
