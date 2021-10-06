@@ -28,5 +28,5 @@ def simple_trackbar(image, window_name):
     return threshold
 
 
-img_grey = cv2.imread('statue_small.jpg', cv2.IMREAD_GRAYSCALE)
+img_grey = cv2.imread('sample_anonyme.png', cv2.IMREAD_GRAYSCALE)
 simple_trackbar(img_grey, "threshold")

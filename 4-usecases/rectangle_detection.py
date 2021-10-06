@@ -142,7 +142,7 @@ class BackgroundExtractor:
         mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
         img2 = img2 * mask2[:, :, np.newaxis]
         if self.environment_mode == "development":
-            cv2.imwrite(destination_path + "_contour_origin.png", img2)
+            cv2.imwrite(destination_path + "3_contour_origin.png", img2)
         (h, w) = target_img.shape[:2]
         mask3 = cv2.resize(mask2, (w, h), interpolation=cv2.INTER_AREA)
         target_img = target_img * mask3[:, :, np.newaxis]
@@ -178,11 +178,11 @@ def extract_rectangle(target_img, destination_path="", environment_mode="product
     img_tmp_size = 360
     thresh = cv2.dilate(thresh, kernel, iterations=dilate_iteration)
     if environment_mode == "development":
-        cv2.imwrite(destination_path + "_Threshold.png", thresh)
+        cv2.imwrite(destination_path + "1_threshold.png", thresh)
     contour = _find_contour(thresh, destination_path=destination_path)
     target_img, border_size_top, border_size_left = add_border(target_img, border_type=cv2.BORDER_REPLICATE)
     if environment_mode == "development":
-        cv2.imwrite(destination_path + "_margin.png", target_img)
+        cv2.imwrite(destination_path + "2_margin.png", target_img)
     img2 = target_img.copy()
     img2, ratio = normalize_size(img2, img_tmp_size)
     color = (0, 0, 255)
@@ -198,7 +198,7 @@ def extract_rectangle(target_img, destination_path="", environment_mode="product
     background_extrator = BackgroundExtractor(target_img.copy(), img2, environment_mode)
     img_foreground = background_extrator.extract_background(rectangle, 7, destination_path=destination_path)
     if environment_mode == "development":
-        cv2.imwrite(destination_path + "_img_foreground1.png", img_foreground)
+        cv2.imwrite(destination_path + "4_img_foreground.png", img_foreground)
 
     contour2 = _find_contour(cv2.cvtColor(img_foreground, cv2.COLOR_BGR2GRAY), destination_path=destination_path,
                              contour_mode=cv2.RETR_EXTERNAL)
@@ -212,7 +212,7 @@ def extract_rectangle(target_img, destination_path="", environment_mode="product
         box = np.int0(box)
         if environment_mode == "development":
             cv2.drawContours(img_foreground, [box], 0, color, 20)
-            cv2.imwrite(destination_path + "_img_foreground.png", img_foreground)
+            cv2.imwrite(destination_path + "5_img_foreground.png", img_foreground)
             cv2.drawContours(target_img, [box], 0, color, 20)
         return wrap(box, target_img)
     else:

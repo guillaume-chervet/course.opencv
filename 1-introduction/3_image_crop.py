@@ -1,6 +1,8 @@
 import cv2
 
-img = cv2.imread('./sample.png', cv2.IMREAD_COLOR)
+img = cv2.imread('./sample_anonyme.png', cv2.IMREAD_COLOR)
 
 img_cropped = img[0:200, 0:100]
-cv2.imwrite('sample-cropped.jpg', img_cropped)
+cv2.imshow("sample-cropped", img_cropped)
+cv2.waitKey()
+cv2.destroyAllWindows()

@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('./sample.png', cv2.IMREAD_COLOR)
+img = cv2.imread('./sample_anonyme.png', cv2.IMREAD_COLOR)
 width = 4
 height = 3
 dimension = (width, height)

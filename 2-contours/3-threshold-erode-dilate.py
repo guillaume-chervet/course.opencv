@@ -17,7 +17,9 @@ title_dilation_window = 'Dilation Demo'
 
 def main(image):
     global src
-    src = cv.imread(cv.samples.findFile(image))
+    img = cv.imread(cv.samples.findFile(image), cv.IMREAD_GRAYSCALE)
+    src = np.zeros(img.shape, np.uint8)
+    cv.threshold(img, 125, 255, cv.THRESH_BINARY_INV, src)
     if src is None:
         print('Could not open or find the image: ', image)
         exit(0)
@@ -64,6 +66,6 @@ def dilatation(val):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Code for Eroding and Dilating tutorial.')
-    parser.add_argument('--input', help='Path to input image.', default='statue_small.jpg')
+    parser.add_argument('--input', help='Path to input image.', default='sample.png')
     args = parser.parse_args()
     main(args.input)
