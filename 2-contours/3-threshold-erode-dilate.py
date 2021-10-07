@@ -66,6 +66,6 @@ def dilatation(val):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Code for Eroding and Dilating tutorial.')
-    parser.add_argument('--input', help='Path to input image.', default='sample.png')
+    parser.add_argument('--input', help='Path to input image.', default='sample_anonyme.png')
     args = parser.parse_args()
     main(args.input)

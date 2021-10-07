@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('./sample_anonyme.png')
+img = cv2.imread('./sample_anonyme.png') #BGR
 width = 4
 height = 3
 dimension = (width, height)

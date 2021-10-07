@@ -12,16 +12,18 @@ contours, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL,
 for contour in contours:
     # find bounding box coordinates
     x, y, w, h = cv2.boundingRect(contour)
-    cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
+    green = (0, 255, 0)
+    cv2.rectangle(img, (x,y), (x+w, y+h), green, 2)
 
     # find minimum area
-    rect = cv2.minAreaRect(contour)
+    min_rectangle = cv2.minAreaRect(contour)
     # calculate coordinates of the minimum area rectangle
-    box = cv2.boxPoints(rect)
+    box = cv2.boxPoints(min_rectangle)
     # normalize coordinates to integers
     box = np.int0(box)
     # draw contours
-    cv2.drawContours(img, [box], 0, (0,0, 255), 3)
+    red = (0, 0, 255)
+    cv2.drawContours(img, [box], 0, red, 3)
 
     # calculate center and radius of minimum enclosing circle
     (x, y), radius = cv2.minEnclosingCircle(contour)
@@ -29,7 +31,7 @@ for contour in contours:
     center = (int(x), int(y))
     radius = int(radius)
     # draw the circle
-    img = cv2.circle(img, center, radius, (0, 255, 0), 2)
+    img = cv2.circle(img, center, radius, green, 2)
 
 cv2.drawContours(img, contours, -1, (255, 0, 0), 1)
 cv2.imshow("contours", img)
