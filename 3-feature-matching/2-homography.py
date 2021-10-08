@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
 
 MIN_NUM_GOOD_MATCHES = 10
 
