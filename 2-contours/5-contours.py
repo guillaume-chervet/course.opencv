@@ -9,6 +9,9 @@ ret, thresh = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY),
 contours, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL,
                                   cv2.CHAIN_APPROX_SIMPLE)
 
+blue = (255, 0, 0)
+cv2.drawContours(img, contours, -1, blue, 2)
+
 for contour in contours:
     # find bounding box coordinates
     x, y, w, h = cv2.boundingRect(contour)
@@ -22,9 +25,7 @@ for contour in contours:
     red = (0, 0, 255)
     cv2.drawContours(img, [box], 0, red, 3)
 
-blue = (255, 0, 0)
-cv2.drawContours(img, contours, -1, blue, 2)
-cv2.imshow("contours", img)
 
+cv2.imshow("contours", img)
 cv2.waitKey()
 cv2.destroyAllWindows()
