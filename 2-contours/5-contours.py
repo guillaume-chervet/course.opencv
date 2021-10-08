@@ -7,13 +7,13 @@ ret, thresh = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY),
                             127, 255, cv2.THRESH_BINARY)
 
 contours, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL,
-                                      cv2.CHAIN_APPROX_SIMPLE)
+                                  cv2.CHAIN_APPROX_SIMPLE)
 
 for contour in contours:
     # find bounding box coordinates
     x, y, w, h = cv2.boundingRect(contour)
     green = (0, 255, 0)
-    cv2.rectangle(img, (x,y), (x+w, y+h), green, 2)
+    cv2.rectangle(img, (x, y), (x + w, y + h), green, 2)
 
     # find minimum area
     min_rectangle = cv2.minAreaRect(contour)
