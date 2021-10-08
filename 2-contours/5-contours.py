@@ -17,23 +17,13 @@ for contour in contours:
 
     # find minimum area
     min_rectangle = cv2.minAreaRect(contour)
-    # calculate coordinates of the minimum area rectangle
     box = cv2.boxPoints(min_rectangle)
-    # normalize coordinates to integers
     box = np.int0(box)
-    # draw contours
     red = (0, 0, 255)
     cv2.drawContours(img, [box], 0, red, 3)
 
-    # calculate center and radius of minimum enclosing circle
-    (x, y), radius = cv2.minEnclosingCircle(contour)
-    # cast to integers
-    center = (int(x), int(y))
-    radius = int(radius)
-    # draw the circle
-    img = cv2.circle(img, center, radius, green, 2)
-
-cv2.drawContours(img, contours, -1, (255, 0, 0), 1)
+blue = (255, 0, 0)
+cv2.drawContours(img, contours, -1, blue, 2)
 cv2.imshow("contours", img)
 
 cv2.waitKey()
