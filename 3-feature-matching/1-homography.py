@@ -3,9 +3,9 @@ import cv2
 
 MIN_NUM_GOOD_MATCHES = 10
 
-img0 = cv2.imread('tattoos/query.png',
+img0 = cv2.imread('text/no_name6.png',
                   cv2.IMREAD_GRAYSCALE)
-img1 = cv2.imread('tattoos/anchor-man.png',
+img1 = cv2.imread('text/sample1.png',
                   cv2.IMREAD_GRAYSCALE)
 
 # Perform SIFT feature detection and description.

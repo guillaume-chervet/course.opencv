@@ -204,7 +204,7 @@ def extract_rectangle(target_img, destination_path="", environment_mode="product
     if environment_mode == "development":
         cv2.imwrite(destination_path + "5_img_grabcut.png", img_foreground)
 
-    contour_img_small_extracted = _find_contour(cv2.cvtColor(img_foreground, cv2.COLOR_BGR2GRAY), destination_path=destination_path, threshold_min_are=0.3,
+    contour_img_small_extracted = _find_contour(cv2.cvtColor(img_foreground, cv2.COLOR_BGR2GRAY), destination_path=destination_path, threshold_min_are=0.1,
                              contour_mode=cv2.RETR_EXTERNAL)
 
     if contour_img_small_extracted is not None:

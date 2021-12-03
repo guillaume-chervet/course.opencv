@@ -50,6 +50,7 @@ https://scottsuhy.com/2021/02/01/image-alignment-feature-based-in-opencv-js-java
 - https://github.com/Mjrovai/OpenCV-Face-Recognition.git
 - https://github.com/arnavdutta/Table-Detection-Extraction/blob/master/table_detection.py
 
+feature-detection-and-matching :
 - https://docs.opencv.org/master/d1/de0/tutorial_py_feature_homography.html
 - https://blog.francium.tech/feature-detection-and-matching-with-opencv-5fd2394a590
 
