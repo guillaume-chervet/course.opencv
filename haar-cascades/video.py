@@ -1,7 +1,8 @@
 import cv2
 import urllib.request
 
-# Dowload the cascade (more available at https://github.com/opencv/opencv/tree/master/data/haarcascades)
+# Dowload
+# the cascade (more available at https://github.com/opencv/opencv/tree/master/data/haarcascades)
 url = "https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml"
 urllib.request.urlretrieve(url, 'haarcascade_frontalface_default.xml')
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
