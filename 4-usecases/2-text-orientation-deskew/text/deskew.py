@@ -4,6 +4,7 @@ import numpy as np
 
 def deskew(mser_img):
     img = mser_img
+    original_copy = mser_img.copy()
     if len(img.shape) == 2:
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
     ret, thresh = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
@@ -24,6 +25,7 @@ def deskew(mser_img):
     is_rotated = False
     if number_higher > number_larger:
         erosion = cv2.rotate(erosion, cv2.ROTATE_90_CLOCKWISE)
+        original_copy = cv2.rotate(original_copy, cv2.ROTATE_90_CLOCKWISE)
         contours, hier = cv2.findContours(erosion, cv2.RETR_EXTERNAL,
                                           cv2.CHAIN_APPROX_SIMPLE)
         is_rotated = True
@@ -36,6 +38,10 @@ def deskew(mser_img):
         if h * 3 < w < h * 16:
             filtered_contours.append(contour)
             min_rectangle = cv2.minAreaRect(contour)
+            box = cv2.boxPoints(min_rectangle)
+            box = np.int0(box)
+            red = (0, 0, 255)
+            cv2.drawContours(original_copy, [box], 0, red, 3)
             angle = min_rectangle[2] % 90
             if angle > 45:
                 angle = angle - 90
@@ -44,7 +50,7 @@ def deskew(mser_img):
             angles.append(angle)
 
     if len(angles) == 0:
-        return 0
+        return 0, None
 
     sorted_angles = np.sort(angles)
     previous_angle = None
@@ -77,4 +83,4 @@ def deskew(mser_img):
     if is_rotated:
         angle_mean = angle_mean + 90
 
-    return round(angle_mean, 2)
+    return round(angle_mean, 2), original_copy

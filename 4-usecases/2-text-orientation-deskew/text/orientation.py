@@ -43,15 +43,12 @@ def orientate(image):
     max_count = 0
     max_index = 0
     for index, count in enumerate(counts):
-        #print(str(count))
-        #print(str(index))
 
         if count > max_count:
             max_count = count
             max_index = index
 
     duration = time.time() - start_time
-    #print("orientate time : " + str(straightening_duration))
 
     return images[max_index], (max_index*180), duration
 

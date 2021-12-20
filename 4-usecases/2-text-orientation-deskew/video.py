@@ -15,7 +15,9 @@ while (True):
     ret, frame = vid.read()
 
     deskew_start = time.time()
-    angle_deskew = deskew(frame)
+    angle_deskew, original_copy = deskew(frame)
+    if original_copy is not None:
+        cv2.imshow('deskew_rectangles', cv2.pyrDown(original_copy))
     img_deskew_cv = rotate(angle_deskew, frame)
     deskew_duration = time.time() - deskew_start
     orientate_start = time.time()
