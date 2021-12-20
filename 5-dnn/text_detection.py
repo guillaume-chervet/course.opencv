@@ -22,27 +22,7 @@ import cv2 as cv
 import math
 import argparse
 
-############ Add argument parser for command line arguments ############
-parser = argparse.ArgumentParser(
-    description="Use this script to run TensorFlow implementation (https://github.com/argman/EAST) of "
-                "EAST: An Efficient and Accurate Scene Text Detector (https://arxiv.org/abs/1704.03155v2)"
-                "The OCR model can be obtained from converting the pretrained CRNN model to .onnx format from the github repository https://github.com/meijieru/crnn.pytorch"
-                "Or you can download trained OCR model directly from https://drive.google.com/drive/folders/1cTbQ3nuZG-EKWak6emD_s8_hHXWz7lAr?usp=sharing")
-parser.add_argument('--input',
-                    help='Path to input image or video file. Skip this argument to capture frames from a camera.')
-parser.add_argument('--model', '-m', required=True,
-                    help='Path to a binary .pb file contains trained detector network.')
-parser.add_argument('--ocr', default="crnn.onnx",
-                    help="Path to a binary .pb or .onnx file contains trained recognition network", )
-parser.add_argument('--width', type=int, default=320,
-                    help='Preprocess input image by resizing to a specific width. It should be multiple by 32.')
-parser.add_argument('--height', type=int, default=320,
-                    help='Preprocess input image by resizing to a specific height. It should be multiple by 32.')
-parser.add_argument('--thr', type=float, default=0.5,
-                    help='Confidence threshold.')
-parser.add_argument('--nms', type=float, default=0.4,
-                    help='Non-maximum suppression threshold.')
-args = parser.parse_args()
+
 
 
 ############ Utility functions ############
@@ -135,7 +115,7 @@ def decodeBoundingBoxes(scores, geometry, scoreThresh):
     return [detections, confidences]
 
 
-def main():
+def main(args):
     # Read and store arguments
     confThreshold = args.thr
     nmsThreshold = args.nms
@@ -232,4 +212,26 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    ############ Add argument parser for command line arguments ############
+    parser = argparse.ArgumentParser(
+        description="Use this script to run TensorFlow implementation (https://github.com/argman/EAST) of "
+                    "EAST: An Efficient and Accurate Scene Text Detector (https://arxiv.org/abs/1704.03155v2)"
+                    "The OCR model can be obtained from converting the pretrained CRNN model to .onnx format from the github repository https://github.com/meijieru/crnn.pytorch"
+                    "Or you can download trained OCR model directly from https://drive.google.com/drive/folders/1cTbQ3nuZG-EKWak6emD_s8_hHXWz7lAr?usp=sharing")
+    parser.add_argument('--input',
+                        help='Path to input image or video file. Skip this argument to capture frames from a camera.')
+    parser.add_argument('--model', '-m', required=True,
+                        help='Path to a binary .pb file contains trained detector network.')
+    parser.add_argument('--ocr', default="crnn.onnx",
+                        help="Path to a binary .pb or .onnx file contains trained recognition network", )
+    parser.add_argument('--width', type=int, default=320,
+                        help='Preprocess input image by resizing to a specific width. It should be multiple by 32.')
+    parser.add_argument('--height', type=int, default=320,
+                        help='Preprocess input image by resizing to a specific height. It should be multiple by 32.')
+    parser.add_argument('--thr', type=float, default=0.5,
+                        help='Confidence threshold.')
+    parser.add_argument('--nms', type=float, default=0.4,
+                        help='Non-maximum suppression threshold.')
+    args = parser.parse_args()
+
+    main(args)
