@@ -1,9 +1,9 @@
 import cv2
 
 
-img = cv2.imread('text/no_name (3).png',0)
+img = cv2.imread('templates/modeledelettre.jpg',0)
 img2 = img.copy()
-template = cv2.imread('text/sample1.png',0)
+template = cv2.imread('templates/query.png',0)
 w, h = template.shape[::-1]
 # All the 6 methods for comparison in a list
 methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR',

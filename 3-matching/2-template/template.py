@@ -2,9 +2,9 @@ import cv2 as cv
 import numpy as np
 
 
-
 def apply_template(img_rgb, template):
-    img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
+    if len(img_rgb.shape) == 3:
+        img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
     w, h = template.shape[::-1]
     res = cv.matchTemplate(img_gray, template,cv.TM_CCOEFF_NORMED)
     threshold = 0.6
@@ -13,8 +13,8 @@ def apply_template(img_rgb, template):
         cv.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
     return img_rgb
 
-template = cv.imread("template.py/query.png",0)
-img_rgb = cv.imread('text/no_name.png')
+template = cv.imread("templates/query.png",0)
+img_rgb = cv.imread('templates/modeledelettre.jpg')
 
 apply_template(img_rgb, template)
 

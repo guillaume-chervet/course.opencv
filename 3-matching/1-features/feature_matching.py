@@ -1,11 +1,11 @@
 import numpy as np
 import cv2
 
-MIN_NUM_GOOD_MATCHES = 10
 
 
 
-def apply_match(img0):
+
+def apply_match(img0, MIN_NUM_GOOD_MATCHES = 10):
     # Perform SIFT feature detection and description.
     sift = cv2.xfeatures2d.SIFT_create()
     kp0, des0 = sift.detectAndCompute(img0, None)

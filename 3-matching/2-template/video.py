@@ -17,13 +17,12 @@ def apply_template(img_rgb, template):
         cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0, 0, 255), 2)
     return img_rgb
 
-template = cv2.imread("templates/query.png", 0)
+template = cv2.imread("templates/book_mongo_300.jpg", 0)
 while (True):
 
     # Capture the video frame
     # by frame
     ret, frame = vid.read()
-
 
     img = apply_template(frame, template)
 
