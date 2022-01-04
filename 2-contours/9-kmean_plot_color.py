@@ -1,6 +1,8 @@
 import numpy as np
 import cv2
 
+import urllib.request
+import pathlib
 
 def centroid_histogram(labels):
     numLabels = np.arange(0, len(np.unique(labels)) + 1)
@@ -22,7 +24,7 @@ def plot_colors(hist, centroids):
 
 
 def kmean(image):
-    NCLUSTERS = 7
+    NCLUSTERS = 5
     NROUNDS = 1
 
     height, width, channels = image.shape
@@ -46,7 +48,14 @@ def kmean(image):
     return bar
 
 
-img = cv2.imread('sample_anonyme.png', cv2.IMREAD_COLOR)
+# Dowload
+image = 'guile.png'
+if pathlib.Path(image):
+    url = "https://th.bing.com/th/id/OIP.OGMAb0rahKATlVnmO0ZZMwHaKH?pid=ImgDet&rs=1"
+    urllib.request.urlretrieve(url, image)
+
+
+img = cv2.imread(image, cv2.IMREAD_COLOR)
 img_out = kmean(img)
 cv2.imshow('img_out', img_out)
 cv2.waitKey()

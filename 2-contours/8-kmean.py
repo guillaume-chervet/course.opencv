@@ -1,8 +1,10 @@
+import pathlib
+import urllib.request
 import numpy as np
 import cv2
 
 def kmean(image):
-    NCLUSTERS = 4
+    NCLUSTERS = 5
     NROUNDS = 1
 
     height, width, channels = image.shape
@@ -24,19 +26,14 @@ def kmean(image):
     segmented_image = centers[labels.flatten()]
     return segmented_image.reshape(image.shape)
 
-vid = cv2.VideoCapture(0)
-vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+image = 'guile.png'
+if pathlib.Path(image):
+    url = "https://th.bing.com/th/id/OIP.OGMAb0rahKATlVnmO0ZZMwHaKH?pid=ImgDet&rs=1"
+    urllib.request.urlretrieve(url, image)
 
-while (True):
 
-    ret, frame = vid.read()
-
-    img_out = kmean(frame)
-    cv2.imshow('img_out', img_out)
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-vid.release()
+img = cv2.imread(image, cv2.IMREAD_COLOR)
+img_out = kmean(img)
+cv2.imshow('img_out', img_out)
+cv2.waitKey()
 cv2.destroyAllWindows()
