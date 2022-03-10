@@ -11,9 +11,7 @@ if pathlib.Path(model):
     url = "https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml"
     urllib.request.urlretrieve(url, model)
 
-
 face_cascade = cv2.CascadeClassifier(model)
-
 vid = cv2.VideoCapture(0)
 
 while True:

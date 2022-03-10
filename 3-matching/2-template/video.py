@@ -1,11 +1,9 @@
-
 import cv2
 import numpy as np
 
 vid = cv2.VideoCapture(0)
 vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-
 
 def apply_template(img_rgb, template):
     img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
@@ -19,19 +17,11 @@ def apply_template(img_rgb, template):
 
 template = cv2.imread("templates/book_mongo_300.jpg", 0)
 while (True):
-
-    # Capture the video frame
-    # by frame
     ret, frame = vid.read()
-
     img = apply_template(frame, template)
-
     cv2.imshow('template', img)
-
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# After the loop release the cap object
 vid.release()
-# Destroy all the windows
 cv2.destroyAllWindows()
