@@ -21,7 +21,7 @@ for contour in contours:
     # find minimum area
     min_rectangle = cv2.minAreaRect(contour)
     box = cv2.boxPoints(min_rectangle)
-    box = np.int0(box)
+    box = np.intp(box)
     red = (0, 0, 255)
     cv2.drawContours(img, [box], 0, red, 3)
 
