@@ -2,12 +2,12 @@ import cv2
 import feature_matching
 import image
 
-vid = cv2.VideoCapture(0)
+#vid = cv2.VideoCapture(0)
+#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+vid = cv2.VideoCapture(1)
 vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-#vid = cv2.VideoCapture(1)
-#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 template = cv2.imread("templates/book_mongo_800.jpg", cv2.IMREAD_GRAYSCALE)
 template, ratio = image.normalize_size(template, 300)

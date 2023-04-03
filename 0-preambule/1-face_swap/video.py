@@ -19,11 +19,11 @@ def extract_index_nparray(nparray):
     return index
 
 
-img = cv2.imread("macron.jpg")
+img = cv2.imread("johny.jpg")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 mask = np.zeros_like(img_gray)
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
@@ -168,8 +168,8 @@ while True:
 
         seamlessclone = cv2.seamlessClone(result, img2, img2_head_mask, center_face2, cv2.MIXED_CLONE)
 
-       # cv2.imshow("img2", img2)
-        #cv2.imshow("clone", seamlessclone)
+        cv2.imshow("img2", img2)
+        cv2.imshow("clone", seamlessclone)
         cv2.imshow("result", result)
     except Exception:
         print("exception")

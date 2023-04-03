@@ -2,12 +2,12 @@ import cv2
 import argparse
 import text_detection
 
-vid = cv2.VideoCapture(0)
+#vid = cv2.VideoCapture(0)
+#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+vid = cv2.VideoCapture(1)
 vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-#vid = cv2.VideoCapture(1)
-#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 
 ret, frame = vid.read()

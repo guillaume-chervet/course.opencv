@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
 
-vid = cv2.VideoCapture(0)
-vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-#vid = cv2.VideoCapture(1)
-#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+#vid = cv2.VideoCapture(0)
+#vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+#vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+vid = cv2.VideoCapture(1)
+vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 def apply_template(img_rgb, template):
     img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
