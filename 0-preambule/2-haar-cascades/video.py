@@ -9,7 +9,7 @@ if pathlib.Path(model):
     urllib.request.urlretrieve(url, model)
 
 face_cascade = cv2.CascadeClassifier(model)
-vid = cv2.VideoCapture(0)
+vid = cv2.VideoCapture(1)
 while True:
     _, img = vid.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -17,8 +17,7 @@ while True:
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
     cv2.imshow('img', img)
-    k = cv2.waitKey(30) & 0xff
-    if k==27:
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 vid.release()

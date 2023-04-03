@@ -171,7 +171,7 @@ def main(args):
         indices = cv.dnn.NMSBoxesRotated(boxes, confidences, confThreshold, nmsThreshold)
         for i in indices:
             # get 4 corners of the rotated rect
-            vertices = cv.boxPoints(boxes[i[0]])
+            vertices = cv.boxPoints(boxes[i])
             # scale the bounding box coordinates based on the respective ratios
             for j in range(4):
                 vertices[j][0] *= rW
