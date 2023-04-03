@@ -3,7 +3,7 @@ import cv2
 
 def apply_match(img0, MIN_NUM_GOOD_MATCHES = 10):
     # Perform SIFT feature detection and description.
-    sift = cv2.xfeatures2d.SIFT_create()
+    sift = cv2.SIFT_create()
     kp0, des0 = sift.detectAndCompute(img0, None)
 
     def execute( img1):

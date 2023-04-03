@@ -23,7 +23,7 @@ img = cv2.imread("macron.jpg")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 mask = np.zeros_like(img_gray)
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
@@ -173,8 +173,7 @@ while True:
         cv2.imshow("result", result)
     except Exception:
         print("exception")
-    key = cv2.waitKey(1)
-    if key == 27:
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 cap.release()
