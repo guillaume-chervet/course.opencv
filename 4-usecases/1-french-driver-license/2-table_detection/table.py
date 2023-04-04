@@ -126,5 +126,5 @@ def extract_table(img, destination_path=""):
     toto, thresh = cv2.threshold(table_segment, 0, 255, cv2.THRESH_BINARY)
     kernel = np.ones((7, 7), np.uint8)
     thresh = cv2.dilate(thresh, kernel, 2)
-    img_out, number_rect_right, number_rect_left = find_contour(thresh, img.copy(), destination_path=destination_path, min_area=3000, max_area=0.2)
+    img_out, number_rect_right, number_rect_left = find_contour(thresh, img.copy(), destination_path=destination_path, min_area=3000, max_area=0.08)
     return thresh, img_out, number_rect_right, number_rect_left
