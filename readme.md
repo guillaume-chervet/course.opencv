@@ -1,5 +1,5 @@
 
-![](main.png)
+![](main.jpg)
 
 ## 1 Introduction
 

@@ -22,6 +22,7 @@ def simple_trackbar(image, window_name):
             cv2.threshold(image, trackbar_position_threshold, 255, cv2.THRESH_BINARY, threshold)
         else:
             threshold = image
+
         if trackbar_position_erode > 0:
             kernel = np.ones((trackbar_position_erode, trackbar_position_erode), np.uint8)
             threshold = cv2.erode(threshold, kernel)
