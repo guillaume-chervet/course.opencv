@@ -65,7 +65,7 @@ def normalize_size(target_img, max_size):
     if target_img.shape[1] > target_img.shape[0] and target_img.shape[1] > max_size:
         target_img, ratio = image_resize(target_img, width=max_size)
 
-    if target_img.shape[0] >= target_img.shape[1] or target_img.shape[0] > max_size:
+    if target_img.shape[0] >= target_img.shape[1] and target_img.shape[0] > max_size:
         target_img, ratio = image_resize(target_img, height=max_size)
 
     return target_img, ratio

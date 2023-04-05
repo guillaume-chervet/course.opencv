@@ -11,7 +11,8 @@ frame = cv2.imread('specimen.png')
 deskew_start = time.time()
 angle_deskew, original_copy = deskew(frame)
 if original_copy is not None:
-    cv2.imshow('deskew_rectangles', cv2.pyrDown(original_copy))
+    cv2.imshow('1-deskew_rectangles', cv2.pyrDown(original_copy))
+    cv2.imshow('2-angle_deskew', cv2.pyrDown(rotate(angle_deskew -90,original_copy)))
 img_deskew_cv = rotate(angle_deskew, frame)
 deskew_duration = time.time() - deskew_start
 orientate_start = time.time()
@@ -32,8 +33,8 @@ if row > col:
 else:
     border_top = int(col-row)
 img_straighted_cv = cv2.copyMakeBorder(img_straighted_cv, 0, border_top, 0, border_left, cv2.BORDER_CONSTANT, None, value)
-cv2.imshow('frame', img_straighted_cv)
-cv2.imshow('orginal', cv2.pyrDown(frame))
+cv2.imshow('3-final', img_straighted_cv)
+cv2.imshow('0-orginal', cv2.pyrDown(frame))
 
 cv2.waitKey()
 cv2.destroyAllWindows()

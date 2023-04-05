@@ -2,7 +2,7 @@ import pathlib
 import cv2
 import urllib.request
 
-# Dowload the cascade (more available at https://github.com/opencv/opencv/tree/master/data/haarcascades)
+# Download the cascade (more available at https://github.com/opencv/opencv/tree/master/data/haarcascades)
 model = 'haarcascade_frontalface_default.xml'
 if pathlib.Path(model):
     url = "https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml"
