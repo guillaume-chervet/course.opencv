@@ -22,6 +22,7 @@ for filename in files:
     destination_path = os.path.join(OUTPUT_PATH, filename.split(".")[0])
     if not os.path.isdir(destination_path):
         os.mkdir(destination_path)
+    cv2.imwrite(destination_path + "/0_img_origin.png", img_resized)
     start = time.time()
     rectangle_img, homography_points = extract_rectangle(img, destination_path + "/", environment_mode="development")
     end = time.time()
