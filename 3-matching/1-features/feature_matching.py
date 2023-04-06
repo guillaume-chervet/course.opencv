@@ -6,7 +6,7 @@ def apply_match(img0, MIN_NUM_GOOD_MATCHES = 10):
     sift = cv2.SIFT_create()
     kp0, des0 = sift.detectAndCompute(img0, None)
 
-    def execute( img1):
+    def execute(img1):
         kp1, des1 = sift.detectAndCompute(img1, None)
 
         # Define FLANN-based matching parameters.
