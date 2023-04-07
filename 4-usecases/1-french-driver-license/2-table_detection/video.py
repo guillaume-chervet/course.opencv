@@ -14,7 +14,7 @@ while (True):
 
     thresh, img_out, number_rect_right, number_rect_left = extract_table(frame)
     cv2.imshow('rectangles', img_out)
-    cv2.imshow('thresh', thresh)
+    cv2.imshow('thresh', cv2.pyrDown(thresh))
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

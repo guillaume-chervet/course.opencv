@@ -9,6 +9,7 @@ from image import rotate
 frame = cv2.imread('specimen.png')
 
 deskew_start = time.time()
+
 angle_deskew, original_copy = deskew(frame)
 if original_copy is not None:
     cv2.imshow('1-deskew_rectangles', cv2.pyrDown(original_copy))

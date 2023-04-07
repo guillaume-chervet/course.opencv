@@ -19,7 +19,7 @@ def extract_index_nparray(nparray):
     return index
 
 
-img = cv2.imread("schwarzenegger.jpg")
+img = cv2.imread("johny.jpg")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 mask = np.zeros_like(img_gray)
 
@@ -168,9 +168,9 @@ while True:
 
         seamlessclone = cv2.seamlessClone(result, img2, img2_head_mask, center_face2, cv2.MIXED_CLONE)
 
-        cv2.imshow("img2", img2)
+        #cv2.imshow("img2", img2)
         cv2.imshow("clone", seamlessclone)
-        cv2.imshow("result", result)
+        #cv2.imshow("result", result)
     except Exception:
         print("exception")
     if cv2.waitKey(1) & 0xFF == ord('q'):

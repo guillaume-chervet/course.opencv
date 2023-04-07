@@ -14,13 +14,13 @@ def apply_template(img_rgb, template):
     return img_rgb
 
 template = cv.imread("templates/query.png",0)
-img_rgb = cv.imread('templates/modeledelettre.jpg')
-img_180_rgb = cv.imread('templates/modeledelettre_180.jpg')
+img_rgb = cv.imread('templates/sample.jpg')
+img_180_rgb = cv.imread('templates/sample_180.jpg')
 
 apply_template(img_rgb, template)
 apply_template(img_180_rgb, template)
 
-cv.imshow('Detected Point' , img_rgb)
-cv.imshow('Detected Point image reversed' , img_180_rgb)
+cv.imshow('Detected Point image', cv.pyrDown(img_rgb))
+cv.imshow('Detected Point image reversed', cv.pyrDown(img_180_rgb))
 cv.waitKey()
 cv.destroyAllWindows()
