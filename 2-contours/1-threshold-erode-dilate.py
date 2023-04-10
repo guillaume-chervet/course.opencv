@@ -11,6 +11,7 @@ def simple_trackbar(image, window_name):
     cv2.createTrackbar("erode", window_name, 0, 30, nothing)
     cv2.createTrackbar("dilate", window_name, 0, 30, nothing)
     cv2.createTrackbar("color", window_name, 0, 1, nothing)
+    #cv2.createTrackbar("type", window_name, 0, 2, nothing)
 
     while True:
         threshold = np.zeros(image.shape, np.uint8)
@@ -19,7 +20,9 @@ def simple_trackbar(image, window_name):
         trackbar_position_dilate = cv2.getTrackbarPos("dilate", window_name)
         color = cv2.getTrackbarPos("color", window_name)
         if color == 0:
-            cv2.threshold(image, trackbar_position_threshold, 255, cv2.THRESH_BINARY, threshold)
+            ret, threshold = cv2.threshold(image, trackbar_position_threshold, 255, cv2.THRESH_BINARY)
+            #    ret, threshold = cv2.threshold(image, trackbar_position_threshold, 255, cv2.THRESH_BINARY_INV)
+            #   threshold = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY , 11, 2)
         else:
             threshold = image
 

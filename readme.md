@@ -1,6 +1,8 @@
 
 ![](main.jpg)
 
+https://happy-desert-0ef175103.1.azurestaticapps.net/?path=/story/demo--demo-template-generator-video
+
 ## 1 Introduction
 
 - https://opencv.org/
